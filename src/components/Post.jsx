@@ -26,9 +26,6 @@ const Post = ({ post }) => {
   );
   //user following array
 
-  const [updatedUserFollowers, setUpdatedUserFollowers] = useState(
-    post.author?.followers
-  );
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -181,7 +178,7 @@ const Post = ({ post }) => {
           </Avatar>
           <div className="flex  items-center gap-3 ">
             <h1>{post.author?.username}</h1>
-            {user._id === post.author._id && (
+            {user?._id === post?.author?._id && (
               <Badge variant="secondary">Author</Badge>
             )}
           </div>

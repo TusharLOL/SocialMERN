@@ -64,9 +64,8 @@ const Profile = () => {
     navigate(`/chat`);
   };
 
-  
   const displayedPost =
-    activeTab === "posts" ? userProfile?.posts : userProfile?.bookmarks ;
+    activeTab === "posts" ? userProfile?.posts ?? [] : userProfile?.bookmarks ?? [];
 
   return (
     <div>
@@ -340,8 +339,8 @@ const Profile = () => {
                 <span className="py-3 cursor-pointer">TAGS</span>
               </div>
               <div className="pl-5 grid grid-cols-3 gap-1">
-                 {
-                 displayedPost.map((post) => {
+                 { 
+                 userProfile?.posts.map((post) => {
                   return (
                     <div
                       key={post?._id}
@@ -366,7 +365,8 @@ const Profile = () => {
                       </div>
                     </div>
                   );
-                })}
+                })
+                }
               </div>
             </div>
           </div>
