@@ -6,7 +6,7 @@ import { toast } from "sonner";
 import { Link, useNavigate } from "react-router-dom";
 import { Loader2 } from "lucide-react";
 import { useSelector } from "react-redux";
-import logo from "@/assets/instagram_logo.svg";
+import logo from "../assets/instagram_logo.svg";
 
 const Signup = () => {
   const [input, setInput] = useState({
