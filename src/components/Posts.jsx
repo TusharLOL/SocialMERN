@@ -7,7 +7,7 @@ const Posts = () => {
   return (
     <div className="w-[90vw] md:w-[60vw]">
         {
-            posts.map((post) => <Post key={post._id} post={post}/>)
+            posts.slice().reverse().map((post) => <Post key={post?._id} post={post}/>)
         }
     </div>
   )
