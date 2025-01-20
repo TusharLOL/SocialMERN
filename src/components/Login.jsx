@@ -7,7 +7,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { Loader2 } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { setAuthUser } from "@/redux/authSlice";
-import logo from "../assets/instagram_logo.svg";
 
 const Login = () => {
   const [input, setInput] = useState({
@@ -69,7 +68,7 @@ const Login = () => {
       >
         <div>
           <h1 className="text-center font-bold text-xl ">
-            <img src={logo} alt="logo" className="w-30 h-10 inline my-3" />
+            Instagram
           </h1>
           <p className="text-sm text-center">
             Login to see photos and videos from your friends
