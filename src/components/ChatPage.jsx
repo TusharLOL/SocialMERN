@@ -117,7 +117,7 @@ const ChatPage = () => {
           )}
         </div>
       ) : (
-        <div className="flex md:ml-[16%] h-[90vh]">
+        <div className="flex md:ml-[16%] h-[90vh] mb-5">
           <section className="w-full  md:w-1/4 my-8 ">
             <h1 className="font-bold mb-4 px-3 text-xl">Chats</h1>
             <hr className="mb-4 border-gray-300" />
