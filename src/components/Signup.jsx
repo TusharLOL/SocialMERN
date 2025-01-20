@@ -6,6 +6,7 @@ import { toast } from "sonner";
 import { Link, useNavigate } from "react-router-dom";
 import { Loader2 } from "lucide-react";
 import { useSelector } from "react-redux";
+import logo from "@/assets/instagram_logo.svg";
 
 const Signup = () => {
   const [input, setInput] = useState({
@@ -67,7 +68,9 @@ const Signup = () => {
         className="shadow-lg flex flex-col gap-5 p-8  "
       >
         <div>
-          <h1 className="text-center font-bold text-xl ">LOGO</h1>
+          <h1 className="text-center font-bold text-xl ">
+            <img src={logo} alt="logo" className="w-30 h-10 inline my-3" />
+          </h1>
           <p className="text-sm text-center">
             SignUp to see photos and videos from your friends
           </p>
