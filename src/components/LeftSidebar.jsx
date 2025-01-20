@@ -104,7 +104,7 @@ const LeftSidebar = () => {
   };
 
   return (
-    <div className="absolute z-1" >
+    <div className="absolute z-20" >
       {windowWidth > 768 ? (
         <div className="fixed top-0 z-10 left-0 px-4 border-r border-gray-300 w-[16%] h-screen ">
           <div className="flex flex-col ">
