@@ -8,6 +8,8 @@ import { Loader2 } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { setAuthUser } from "@/redux/authSlice";
 
+const apiURL = import.meta.env.VITE_REACT_APP_API_URL;
+
 const Login = () => {
   const [input, setInput] = useState({
     email: "",
@@ -28,7 +30,7 @@ const Login = () => {
     try {
       setLoading(true);
       const res = await axios.post(
-        "https://instaclonebe-qdw4.onrender.com/api/v1/user/login",
+        `${apiURL}/api/v1/user/login`,
         input,
         {
           headers: {

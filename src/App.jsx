@@ -15,6 +15,8 @@ import { setOnlineUsers } from './redux/chatSlice'
 import { setLikeNotification } from './redux/rtnSlice'
 import ProtectedRoutes from './components/ProtectedRoutes'
 
+const apiURL = import.meta.env.VITE_REACT_APP_API_URL;
+
 const browserRouter = createBrowserRouter([
   {
     path:'/',
@@ -55,7 +57,7 @@ function App() {
 
   useEffect(()=>{
     if(user){
-      const socketio = io('https://instaclonebe-qdw4.onrender.com',{
+      const socketio = io(apiURL,{
         query:{
           userId:user?._id
         },

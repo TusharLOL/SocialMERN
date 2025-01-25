@@ -10,6 +10,8 @@ import { toast } from "sonner";
 import axios from "axios";
 import { setAuthUser, setUserProfile } from "@/redux/authSlice";
 
+const apiURL = import.meta.env.VITE_REACT_APP_API_URL;
+
 const Profile = () => {
   const params = useParams();
   const userId = params.id;
@@ -39,7 +41,7 @@ const Profile = () => {
   const handleFollowOrUnfollow = async () => {
     try {
       const res = await axios.post(
-        `https://instaclonebe-qdw4.onrender.com/api/v1/user/followorunfollow/${userProfile?._id}`,
+        `${apiURL}/api/v1/user/followorunfollow/${userProfile?._id}`,
         {},
         {
           withCredentials: true,

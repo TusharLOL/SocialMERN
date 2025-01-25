@@ -13,6 +13,8 @@ import { Badge } from "./ui/badge";
 import { Link, useNavigate } from "react-router-dom";
 import { setAuthUser } from "@/redux/authSlice";
 
+const apiURL = import.meta.env.VITE_REACT_APP_API_URL;
+
 const Post = ({ post }) => {
   const [text, setText] = useState("");
   const [open, setOpen] = useState(false);
@@ -43,7 +45,7 @@ const Post = ({ post }) => {
     try {
       const action = liked ? "dislike" : "like";
       const res = await axios.get(
-        `https://instaclonebe-qdw4.onrender.com/api/v1/post/${post._id}/${action}`,
+        `${apiURL}/api/v1/post/${post._id}/${action}`,
         { withCredentials: true }
       );
       if (res.data.success) {
@@ -69,40 +71,10 @@ const Post = ({ post }) => {
     }
   };
 
-  const handleFollowOrUnfollow = async () => {
-    try {
-      const res = await axios.post(
-        `https://instaclonebe-qdw4.onrender.com/api/v1/user/followorunfollow/${post.author?._id}`,
-        {},
-        {
-          withCredentials: true,
-        }
-      );
-
-      if (res.data.success) {
-        setIsFollowing(!isFollowing);
-        const updatedUserFollowing = isFollowing
-          ? user?.following.filter((id) => id !== post?.author?._id)
-          : [...user?.following, post?.author?._id];
-        dispatch(setAuthUser({ ...user, following: updatedUserFollowing }));
-        const updatedUserFollowers = isFollowing
-          ? post?.author?.followers.filter((id) => id !== user?._id)
-          : [...post?.author?.followers, user?._id];
-        dispatch(
-          setUserProfile({ ...post, followers: updatedUserFollowers })
-        );
-        toast.success(res.data.message);
-      }
-    } catch (error) {
-      console.log(error);
-      toast.error(error.response?.data?.message || "An error occurred");
-    }
-  };
-
   const commentHandler = async () => {
     try {
       const res = await axios.post(
-        `https://instaclonebe-qdw4.onrender.com/api/v1/post/${post._id}/comment`,
+        `${apiURL}/api/v1/post/${post._id}/comment`,
         { text },
         {
           headers: {
@@ -131,7 +103,7 @@ const Post = ({ post }) => {
   const deletePostHandler = async () => {
     try {
       const res = await axios.delete(
-        `https://instaclonebe-qdw4.onrender.com/api/v1/post/delete/${post._id}`,
+        `${apiURL}/api/v1/post/delete/${post._id}`,
         { withCredentials: true }
       );
       if (res.data.success) {
@@ -150,7 +122,7 @@ const Post = ({ post }) => {
   const bookmarkHandler = async () => {
     try {
       const res = await axios.get(
-        `https://instaclonebe-qdw4.onrender.com/api/v1/post/${post?._id}/bookmark`,
+        `${apiURL}/api/v1/post/${post?._id}/bookmark`,
         { withCredentials: true }
       );
       if (res.data.success) {

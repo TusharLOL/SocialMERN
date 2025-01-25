@@ -17,6 +17,8 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { setAuthUser } from "@/redux/authSlice";
 
+const apiURL = import.meta.env.VITE_REACT_APP_API_URL;
+
 const EditProfile = () => {
   const imageRef = useRef();
   const [loading, setLoading] = useState(false);
@@ -49,7 +51,7 @@ const EditProfile = () => {
     }
     try {
       setLoading(true);
-      const res = await axios.post('https://instaclonebe-qdw4.onrender.com/api/v1/user/profile/edit', formData, {
+      const res = await axios.post(`${apiURL}/api/v1/user/profile/edit`, formData, {
         headers:{
             'Content-Type':'multipart/form-data'
         },

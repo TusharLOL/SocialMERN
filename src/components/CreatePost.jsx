@@ -10,6 +10,8 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setPosts } from "@/redux/postSlice";
 
+const apiURL = import.meta.env.VITE_REACT_APP_API_URL;
+
 const CreatePost = ({ open, setOpen }) => {
   const imageRef = useRef(null);
   const [file, setFile] = useState("");
@@ -28,7 +30,7 @@ const CreatePost = ({ open, setOpen }) => {
     }
     try {
       setLoading(true);
-      const res = await axios.post("https://instaclonebe-qdw4.onrender.com/api/v1/post/addpost", formData, {
+      const res = await axios.post(`${apiURL}/api/v1/post/addpost`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

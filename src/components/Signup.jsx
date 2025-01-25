@@ -7,6 +7,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { Loader2 } from "lucide-react";
 import { useSelector } from "react-redux";
 
+const apiURL = import.meta.env.VITE_REACT_APP_API_URL;
+
 const Signup = () => {
   const [input, setInput] = useState({
     username: "",
@@ -27,7 +29,7 @@ const Signup = () => {
     try {
       setLoading(true);
       const res = await axios.post(
-        "https://instaclonebe-qdw4.onrender.com/api/v1/user/register",
+        `${apiURL}/api/v1/user/register`,
         input,
         {
           headers: {

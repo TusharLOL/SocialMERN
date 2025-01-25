@@ -20,6 +20,8 @@ import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { Button } from "./ui/button";
 import { setLikeNotification } from "@/redux/rtnSlice";
 
+const apiURL = import.meta.env.VITE_REACT_APP_API_URL;
+
 const LeftSidebar = () => {
   const navigate = useNavigate();
   const { user } = useSelector((store) => store.auth);
@@ -34,7 +36,7 @@ const LeftSidebar = () => {
 
   const logoutHandler = async () => {
     try {
-      const res = await axios.get("https://instaclonebe-qdw4.onrender.com/api/v1/user/logout", {
+      const res = await axios.get(`${apiURL}/api/v1/user/logout`, {
         withCredentials: true,
       });
       if (res.data.success) {
@@ -85,7 +87,7 @@ const LeftSidebar = () => {
 
   const handleSearch = async () => {
     try {
-      const res = await axios.get(`https://instaclonebe-qdw4.onrender.com/api/v1/user/search`, {
+      const res = await axios.get(`${import.meta.env.URL}/api/v1/user/search`, {
         params: { query },
       });
 

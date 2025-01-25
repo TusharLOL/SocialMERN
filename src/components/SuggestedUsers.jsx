@@ -5,11 +5,13 @@ import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 
 const SuggestedUsers = () => {
     const { suggestedUsers } = useSelector(store => store.auth);
+    const { user } = useSelector(store=>store.auth)
+    const currentUser = user;
     const truncateBio = (bio) => {
         if (!bio) return "Bio here...";
         const words = bio.split(" ");
         return words.length > 4 ? `${words.slice(0, 4).join(" ")}...` : bio;
-      };
+      }; 
     
     return (
         <div className='my-10'>
@@ -33,7 +35,11 @@ const SuggestedUsers = () => {
                                     <span className='text-gray-600 text-sm'>{truncateBio(user?.bio)}</span>
                                 </div>
                             </div>
-                            <span className='text-[#3BADF8] text-xs font-bold cursor-pointer hover:text-[#3495d6]'>Follow</span>
+                            <span className='text-[#3BADF8] text-xs font-bold cursor-pointer hover:text-[#3495d6]'>
+                                {
+                                    currentUser.following.includes(user._id) ? (<p className='text-red-500 hover:text-red-700'>unfollow</p>) : (<p className='text-blue-500 hover:text-blue-700'>follow</p>)
+                                }
+                            </span>
                         </div>
                     )
                 })

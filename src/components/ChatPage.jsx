@@ -9,6 +9,8 @@ import Messages from "./Messages";
 import axios from "axios";
 import { setMessages } from "@/redux/chatSlice";
 
+const apiURL = import.meta.env.VITE_REACT_APP_API_URL;
+
 const ChatPage = () => {
   const [textMessage, setTextMessage] = useState("");
   const { user, suggestedUsers, selectedUser } = useSelector(
@@ -22,7 +24,7 @@ const ChatPage = () => {
   const sendMessageHandler = async (receiverId) => {
     try {
       const res = await axios.post(
-        `https://instaclonebe-qdw4.onrender.com/api/v1/message/send/${receiverId}`,
+        `${apiURL}/api/v1/message/send/${receiverId}`,
         { textMessage },
         {
           headers: {

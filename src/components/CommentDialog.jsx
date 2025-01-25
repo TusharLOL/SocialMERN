@@ -10,6 +10,8 @@ import axios from "axios";
 import { toast } from "sonner";
 import { setPosts } from "@/redux/postSlice";
 
+const apiURL = import.meta.env.VITE_REACT_APP_API_URL;
+
 const CommentDialog = ({ open, setOpen }) => {
   const [text, setText] = useState("");
   const { selectedPost, posts } = useSelector((store) => store.post);
@@ -25,7 +27,7 @@ const CommentDialog = ({ open, setOpen }) => {
   const sendMessageHandler = async () => {
     try {
       const res = await axios.post(
-        `https://instaclonebe-qdw4.onrender.com/api/v1/post/${selectedPost?._id}/comment`,
+        `${apiURL}/api/v1/post/${selectedPost?._id}/comment`,
         { text },
         {
           headers: {
