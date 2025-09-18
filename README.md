@@ -1,4 +1,4 @@
-📸 SocialSquare – Instagram Clone
+📸 SocialSquare –
 
 SocialSquare is a modern social media platform inspired by Instagram, built with React + Vite for blazing-fast performance, TailwindCSS for responsive design, and Redux Toolkit for state management. It supports real-time updates using Socket.io and comes with a clean, user-friendly interface.
 
